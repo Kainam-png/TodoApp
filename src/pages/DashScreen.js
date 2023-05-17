@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import style from '../../assets/css/style';
-import * as Icon from "react-native-feather";
+import * as Icon from 'react-native-feather';
 
 const data = [
   {
@@ -35,9 +35,12 @@ const ItemList = ({descricao, dataExecucao, horaExecucao, status, url}) => {
   };
 
   return (
+    
     <View style={style.ul}>
-      <View>{/* <Image source={{uri: url}} style={style.foto} /> */}</View>
-      <View style={{alignItems:'center',justifyContent:'center',}}>
+      <View style={{justifyContent:'center', marginRight:10,}}>
+        <Icon.Folder stroke="black" fill="#07AFE6" width={40} height={40} />
+      </View>
+      <View style={{alignItems: 'center', justifyContent: 'center'}}>
         <Text style={style.li}>{descricao}</Text>
       </View>
       <View style={style.ulHr}>
@@ -70,7 +73,7 @@ function DashScreen() {
       </View>
       <View style={style.container}>
         <TouchableOpacity style={style.button} activeOpacity={0.5}>
-        <Icon.Plus stroke="red" fill="#fff" width={32} height={32} />
+          <Icon.Plus stroke="black" fill="#fff" width={40} height={40} />
         </TouchableOpacity>
       </View>
     </LinearGradient>

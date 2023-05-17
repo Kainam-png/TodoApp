@@ -46,8 +46,8 @@ export default styles = {
       },
       button: {
         borderRadius:10000,
-        width: 100,
-        height: 100,
+        width: 70,
+        height: 70,
         backgroundColor: 'rgba(0, 0, 0, 0.5)', // exemplo de opacidade de 50%
         justifyContent: 'center',
         alignItems: 'center',
