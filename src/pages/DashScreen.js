@@ -1,15 +1,15 @@
 import react, {useState} from 'react';
 import {
   FlatList,
-  Image,
-  SafeAreaView,
   Text,
-  TouchableHighlight,
   TouchableOpacity,
   View,
+  Modal,
+  StyleSheet,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import style from '../../assets/css/style';
+import {useNavigation} from '@react-navigation/native';
 import * as Icon from 'react-native-feather';
 
 const data = [
@@ -28,14 +28,13 @@ const data = [
     status: '',
   },
 ];
-const ItemList = ({descricao, dataExecucao, horaExecucao, status, url}) => {
-  const [rateStar, setRateStar] = useState(true);
-  const setRadio = () => {
-    setRateStar(!rateStar);
-  };
 
+
+const ItemList = ({descricao, dataExecucao, horaExecucao,navigation,onPress, status, url}) => {
+ 
+  
   return (
-    
+    <TouchableOpacity  >
     <View style={style.ul}>
       <View style={{justifyContent:'center', marginRight:10,}}>
         <Icon.Folder stroke="black" fill="#07AFE6" width={40} height={40} />
@@ -48,10 +47,12 @@ const ItemList = ({descricao, dataExecucao, horaExecucao, status, url}) => {
         <Text style={style.liHr}>{horaExecucao}</Text>
       </View>
     </View>
+    </TouchableOpacity>
   );
 };
 
-function DashScreen() {
+function DashScreen({navigation}) {
+  
   return (
     <LinearGradient
       colors={['#027399', '#07AFE6', '#21C8FF']}
@@ -72,7 +73,7 @@ function DashScreen() {
         />
       </View>
       <View style={style.container}>
-        <TouchableOpacity style={style.button} activeOpacity={0.5}>
+        <TouchableOpacity style={style.button} activeOpacity={0.5} onPress={()=> navigation.push('CreateTask')}>
           <Icon.Plus stroke="black" fill="#fff" width={40} height={40} />
         </TouchableOpacity>
       </View>

@@ -3,44 +3,49 @@ import {Button, Text, View, TextInput, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import * as Icon from 'react-native-feather';
-const HomeScreen = () => {
+const CreateTaks = () => {
   const [nome, setNome] = useState('');
   const navigation = useNavigation();
   const handleClick = () => {
     //navegacao
-    navigation.navigate('Dash', {nome: nome});
+    navigation.goBack();
   };
   return (
     <LinearGradient
       colors={['#027399', '#07AFE6', '#21C8FF']}
       style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <View style={{bottom:30}}>
-        <Icon.Folder stroke="black" fill="#07AFE6" width={150} height={150} />
-        
-        </View>
-      {/* <TextInput
-        style={{
-          marginBottom: 10,
-          width: '70%',
-          // borderWidth: 2,
-          // borderColor: '#000',
-          borderRadius:15,
-          backgroundColor:'#027399',
-        }}
-        placeholder="Nome"
-        placeholderTextColor="#FFf"
-        
-      /> */}
+      <View style={{bottom: 40,}}>
+        <Text style={{fontSize: 35,color:'#000'}}>
+          
+          Criar Tarefa
+        </Text>
+      </View>
       <TextInput
         style={{
           marginBottom: 10,
+          padding:10,
           width: '70%',
           // borderWidth: 2,
           // borderColor: '#000',
           borderRadius: 15,
           backgroundColor: '#027399',
         }}
-        placeholder="E-mail"
+        placeholder="Titulo da tarefa"
+        placeholderTextColor="#FFf"
+      />
+      <TextInput
+        style={{
+          marginBottom: 10,
+          width: '70%',
+          height:100,
+          padding:10,
+          // borderWidth: 2,
+          // borderColor: '#000',
+          borderRadius: 15,
+          backgroundColor: '#027399',
+        }}
+        numberOfLines={4}
+        placeholder="Descrição da tarefa"
         placeholderTextColor="#FFf"
         keyboardType="email-address"
       />
@@ -48,6 +53,7 @@ const HomeScreen = () => {
         style={{
           marginBottom: 10,
           width: '70%',
+          padding:10,
           // borderWidth: 2,
           // borderColor: '#000',
           borderRadius: 15,
@@ -67,16 +73,10 @@ const HomeScreen = () => {
           borderRadius: 15,
         }}
         onPress={handleClick}>
-        <Text style={{fontSize: 16, color: '#FFF'}}>Entrar</Text>
+        <Text style={{fontSize: 16, color: '#FFF'}}>Concluir</Text>
       </TouchableOpacity>
-      <View style={{flexDirection:'row',top:10,}}>
-        <Text style={{fontSize:16,color:'#000'}}>Não possui cadastro?</Text>
-        <TouchableOpacity onPress={()=>navigation.push('CadastroScreen')}>
-          <Text style={{fontSize:16,color:'#000',textDecorationLine:'underline'}}> Criar conta</Text>
-        </TouchableOpacity>
-      </View>
     </LinearGradient>
   );
 };
 
-export default HomeScreen;
+export default CreateTaks;

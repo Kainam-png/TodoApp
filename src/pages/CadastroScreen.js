@@ -18,7 +18,7 @@ const HomeScreen = () => {
         <Icon.Folder stroke="black" fill="#07AFE6" width={150} height={150} />
         
         </View>
-      {/* <TextInput
+      <TextInput
         style={{
           marginBottom: 10,
           width: '70%',
@@ -30,7 +30,7 @@ const HomeScreen = () => {
         placeholder="Nome"
         placeholderTextColor="#FFf"
         
-      /> */}
+      /> 
       <TextInput
         style={{
           marginBottom: 10,
@@ -66,14 +66,10 @@ const HomeScreen = () => {
           alignItems: 'center',
           borderRadius: 15,
         }}
-        onPress={handleClick}>
-        <Text style={{fontSize: 16, color: '#FFF'}}>Entrar</Text>
+        onPress={()=>navigation.goBack()}>
+        <Text style={{fontSize: 16, color: '#FFF'}}>Cadastrar</Text>
       </TouchableOpacity>
       <View style={{flexDirection:'row',top:10,}}>
-        <Text style={{fontSize:16,color:'#000'}}>Não possui cadastro?</Text>
-        <TouchableOpacity onPress={()=>navigation.push('CadastroScreen')}>
-          <Text style={{fontSize:16,color:'#000',textDecorationLine:'underline'}}> Criar conta</Text>
-        </TouchableOpacity>
       </View>
     </LinearGradient>
   );
