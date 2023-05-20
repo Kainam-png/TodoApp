@@ -8,10 +8,24 @@ import DescricaoScreen from '../pages/DescricaoScreen'
 
 
 const MainStack = createNativeStackNavigator();
-
+const headerOptions = {
+    headerStyle: {
+      backgroundColor: '#027386', // cor de fundo do cabeçalho
+    },
+    headerTintColor: 'white', // cor do texto do cabeçalho
+    headerTitleStyle: {
+      fontWeight: 'bold', // estilo do texto do título
+    },
+  };
 const MainStackNavigator = () => {
   return (
-    <MainStack.Navigator>
+    <MainStack.Navigator
+    screenOptions={{
+        headerStyle: headerOptions.headerStyle,
+        headerTintColor: headerOptions.headerTintColor,
+        headerTitleStyle: headerOptions.headerTitleStyle,
+      }}
+    >
        <MainStack.Screen 
                     name="Login"
                     component={LoginScreen}
@@ -35,7 +49,8 @@ const MainStackNavigator = () => {
                 <MainStack.Screen 
                     name="DescricaoScreen"
                     component={DescricaoScreen}
-                    options={{headerShown: false}}
+                    options={{headerShown: true,title:'Descrição da tarefa'}}
+                    
                 />
     </MainStack.Navigator>
   );
