@@ -2,7 +2,12 @@ import React, {useState} from 'react';
 import {Button, Text, View, TextInput, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
+import DatePicker from 'react-native-date-picker';
 import * as Icon from 'react-native-feather';
+
+
+
+
 const CreateTaks = () => {
   const [nome, setNome] = useState('');
   const navigation = useNavigation();
@@ -10,6 +15,8 @@ const CreateTaks = () => {
     //navegacao
     navigation.goBack();
   };
+  const [date, setDate] = useState(new Date())
+  const [open, setOpen] = useState(false)
   return (
     <LinearGradient
       colors={['#027399', '#07AFE6', '#21C8FF']}
@@ -63,6 +70,20 @@ const CreateTaks = () => {
         placeholderTextColor="#FFf"
         secureTextEntry={true}
       />
+      <Button title="Open" onPress={() => setOpen(true)} />
+      <DatePicker
+        modal
+        open={open}
+        date={date}
+        mode='date'
+        onConfirm={(date) => {
+          setOpen(false)
+          setDate(date)
+        }}
+        onCancel={() => {
+          setOpen(false)
+        }}
+      />
       <TouchableOpacity
         style={{
           width: 150,
@@ -75,6 +96,7 @@ const CreateTaks = () => {
         onPress={handleClick}>
         <Text style={{fontSize: 16, color: '#FFF'}}>Concluir</Text>
       </TouchableOpacity>
+      
     </LinearGradient>
   );
 };

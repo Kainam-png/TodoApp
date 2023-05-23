@@ -22,7 +22,7 @@ export default styles = {
     liHr: {
       
         color: '#262626',
-        fontSize: 15,
+        fontSize: 12,
       },
     foto: {
     

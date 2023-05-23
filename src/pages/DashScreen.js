@@ -39,6 +39,7 @@ const ItemList = ({
   url,
 }) => {
   const navigation = useNavigation();
+  const [concluida, setConcluida] = useState(false);
 
   return (
     <TouchableOpacity onPress={() => navigation.push('DescricaoScreen')}>
@@ -49,9 +50,17 @@ const ItemList = ({
         <View style={{alignItems: 'center', justifyContent: 'center'}}>
           <Text style={style.li}>{descricao}</Text>
         </View>
-        <View style={style.ulHr}>
+        <View style={style.ulHr}> 
+        <TouchableOpacity onPress={() => setConcluida(!concluida)}>
+  {concluida ? (
+    <Icon.CheckCircle stroke="black"  width={24} height={24} />
+  ) : (
+    <Icon.Circle stroke="black"  width={24} height={24} />
+  )}
+</TouchableOpacity>
           <Text style={style.liHr}>{dataExecucao}</Text>
           <Text style={style.liHr}>{horaExecucao}</Text>
+         
         </View>
       </View>
     </TouchableOpacity>
@@ -119,6 +128,7 @@ function DashScreen({navigation}) {
 }
 //
 const styles = StyleSheet.create({
+  
   container: {
     flex: 1,
     justifyContent: 'center',

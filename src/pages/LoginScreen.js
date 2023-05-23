@@ -3,6 +3,11 @@ import {Button, Text, View, TextInput, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import * as Icon from 'react-native-feather';
+// import SQLite from 'react-native-sqlite-storage'
+
+
+
+
 const HomeScreen = () => {
   const [nome, setNome] = useState('');
   const navigation = useNavigation();
