@@ -28,7 +28,10 @@ const DescricaoScreen = () => {
 
   return (
     <LinearGradient
-      colors={['#027399', '#07AFE6', '#21C8FF']}
+    start={{x:0,y:1}}
+    end={{x:1,y:0}}
+      locations={[.5,0.7]}
+    colors={['#6F9FE6','#7A93E6']}
       style={{flex: 1}}>
         <Modal visible={modalVisible} animationType="fade" transparent={true} onRequestClose={handleCloseModal}>
         <View style={styles.modalContainer}>
@@ -94,8 +97,8 @@ const DescricaoScreen = () => {
       <View style={{flexDirection:'row',gap:20}}>
       <TouchableOpacity
         style={{
-          width: 120,
-          height: 50,
+          width: 80,
+          height: 40,
           backgroundColor: '#027399',
           justifyContent: 'center',
           alignItems: 'center',
@@ -107,8 +110,8 @@ const DescricaoScreen = () => {
       </TouchableOpacity>
       <TouchableOpacity
         style={{
-          width: 120,
-          height: 50,
+          width: 80,
+          height: 40,
           backgroundColor: '#027399',
           justifyContent: 'center',
           alignItems: 'center',

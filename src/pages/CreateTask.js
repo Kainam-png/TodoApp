@@ -2,14 +2,26 @@ import React, {useState} from 'react';
 import {Button, Text, View, TextInput, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
-import DatePicker from 'react-native-date-picker';
-import * as Icon from 'react-native-feather';
+import { addTarefa } from '../db';
 
 
 
 
 const CreateTaks = () => {
-  const [nome, setNome] = useState('');
+  const [tarefa, setTarefa] = useState({descricao: '', data: '', hora: '', status: false});
+
+  const handleChange = (text, nome) => {
+    setTarefa({...tarefa, [nome]: text})
+  }
+
+  const handleAddTarefa = () => {
+    console.log(tarefa);
+    const resultado = addTarefa(tarefa);
+    if(resultado) {
+      navigation.push('Dash');
+    }
+    
+  }
   const navigation = useNavigation();
   const handleClick = () => {
     //navegacao
@@ -19,7 +31,10 @@ const CreateTaks = () => {
   const [open, setOpen] = useState(false)
   return (
     <LinearGradient
-      colors={['#027399', '#07AFE6', '#21C8FF']}
+    start={{x:0,y:1}}
+    end={{x:1,y:0}}
+      locations={[.5,0.7]}
+    colors={['#6F9FE6','#7A93E6']}
       style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <View style={{bottom: 40,}}>
         <Text style={{fontSize: 35,color:'#000'}}>
@@ -39,6 +54,8 @@ const CreateTaks = () => {
         }}
         placeholder="Titulo da tarefa"
         placeholderTextColor="#FFf"
+        onChangeText={(text) => handleChange(text,'descricao')}
+        value={tarefa.descricao}
       />
       <TextInput
         style={{
@@ -51,10 +68,10 @@ const CreateTaks = () => {
           borderRadius: 15,
           backgroundColor: '#027399',
         }}
-        numberOfLines={4}
-        placeholder="Descrição da tarefa"
-        placeholderTextColor="#FFf"
-        keyboardType="email-address"
+        placeholderTextColor='#000'
+        placeholder="Data"
+        onChangeText={(text) => handleChange(text,'data')}
+        value={tarefa.data}
       />
       <TextInput
         style={{
@@ -66,24 +83,13 @@ const CreateTaks = () => {
           borderRadius: 15,
           backgroundColor: '#027399',
         }}
-        placeholder="Senha"
-        placeholderTextColor="#FFf"
-        secureTextEntry={true}
+        placeholderTextColor='#000'
+        placeholder="Hora"
+        onChangeText={(text) => handleChange(text,'hora')}
+        value={tarefa.hora}
       />
-      <Button title="Open" onPress={() => setOpen(true)} />
-      <DatePicker
-        modal
-        open={open}
-        date={date}
-        mode='date'
-        onConfirm={(date) => {
-          setOpen(false)
-          setDate(date)
-        }}
-        onCancel={() => {
-          setOpen(false)
-        }}
-      />
+     
+      
       <TouchableOpacity
         style={{
           width: 150,
@@ -93,7 +99,7 @@ const CreateTaks = () => {
           alignItems: 'center',
           borderRadius: 15,
         }}
-        onPress={handleClick}>
+        onPress={() => handleAddTarefa()}>
         <Text style={{fontSize: 16, color: '#FFF'}}>Concluir</Text>
       </TouchableOpacity>
       

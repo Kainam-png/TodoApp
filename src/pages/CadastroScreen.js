@@ -3,7 +3,12 @@ import {Button, Text, View, TextInput, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import * as Icon from 'react-native-feather';
-const HomeScreen = () => {
+
+
+
+
+
+const CadastroScreen = () => {
   const [nome, setNome] = useState('');
   const navigation = useNavigation();
   const handleClick = () => {
@@ -12,7 +17,10 @@ const HomeScreen = () => {
   };
   return (
     <LinearGradient
-      colors={['#027399', '#07AFE6', '#21C8FF']}
+    start={{x:0,y:1}}
+    end={{x:1,y:0}}
+      locations={[.5,0.7]}
+    colors={['#6F9FE6','#7A93E6']}
       style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <View style={{bottom:30}}>
         <Icon.Folder stroke="black" fill="#07AFE6" width={150} height={150} />
@@ -59,8 +67,8 @@ const HomeScreen = () => {
       />
       <TouchableOpacity
         style={{
-          width: 150,
-          height: 50,
+          width: 85,
+          height: 45,
           backgroundColor: '#027399',
           justifyContent: 'center',
           alignItems: 'center',
@@ -75,4 +83,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default CadastroScreen;
